@@ -2,7 +2,6 @@
         Chart.defaults.font.family = "'IBM Plex Mono', monospace";
         Chart.defaults.font.size = 11;
 
-        /* ---------------- Toast notification ---------------- */
         const toastEl = document.getElementById('toast');
         let toastTimer;
 
@@ -13,7 +12,6 @@
             toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1800);
         }
 
-        /* ---------------- Ripple effect ---------------- */
         function addRipple(e, el) {
             const ripple = document.createElement('span');
             ripple.className = 'ripple';
@@ -32,7 +30,6 @@
             });
         });
 
-        /* ---------------- Brand scroll-to-top ---------------- */
         const brandLogo = document.getElementById('brandLogo');
         brandLogo.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -46,7 +43,6 @@
             }
         });
 
-        /* ---------------- Scroll reveal ---------------- */
         const revealEls = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -58,7 +54,6 @@
         }, { threshold: 0.15 });
         revealEls.forEach(el => revealObserver.observe(el));
 
-        /* ---------------- District map data ---------------- */
         const districts = [
             { name: "Aurangabad (Chh. Sambhajinagar)", x: 160, y: 90, r: 26, rain: -22, temp: 1.9, soil: 0.36 },
             { name: "Jalna", x: 230, y: 95, r: 20, rain: -15, temp: 1.6, soil: 0.40 },
@@ -315,7 +310,6 @@
         renderMap();
         renderLegend();
 
-        /* ---------------- Telemetry row clicks ---------------- */
         document.querySelectorAll('.tele-row').forEach(row => {
             row.addEventListener('click', function() {
                 this.classList.add('flash-highlight');
@@ -337,7 +331,6 @@
             });
         });
 
-        /* ---------------- Pipeline stage clicks ---------------- */
         document.querySelectorAll('.stage').forEach(stage => {
             stage.addEventListener('click', function() {
                 document.querySelectorAll('.stage').forEach(s => s.classList.remove('stage-active'));
@@ -348,7 +341,6 @@
             });
         });
 
-        /* ---------------- Roadmap row clicks ---------------- */
         document.querySelectorAll('.road-row').forEach(row => {
             row.addEventListener('click', function() {
                 const wasActive = this.classList.contains('road-active');
@@ -368,7 +360,6 @@
             });
         });
 
-        /* ---------------- Status row clicks ---------------- */
         document.querySelectorAll('.status-row').forEach(row => {
             row.addEventListener('click', function() {
                 const label = this.querySelector('span:first-child').textContent;
@@ -383,7 +374,6 @@
             });
         });
 
-        /* ---------------- Impact card clicks ---------------- */
         document.querySelectorAll('.impact-card').forEach(card => {
             card.addEventListener('click', function() {
                 const wasPinned = this.classList.contains('card-pinned');
@@ -410,7 +400,6 @@
             });
         });
 
-        /* ---------------- Chart card clicks (toggle bands) ---------------- */
         let rainBandsVisible = true;
         let tempBandsVisible = true;
         const rainChartCard = document.getElementById('rainChartCard');
@@ -431,7 +420,6 @@
             return newVis;
         }
 
-        /* ---------------- What-if simulator ---------------- */
         const rainSlider = document.getElementById('rainSlider');
         const tempSlider = document.getElementById('tempSlider');
         const rainVal = document.getElementById('rainVal');
@@ -528,7 +516,6 @@
             showToast('Chart highlight toggled');
         });
 
-        /* ---------------- Forecast charts ---------------- */
         function genSeries(n, base, noise, trend) {
             const obs = [],
                 pred = [],
@@ -612,6 +599,3 @@
                 tempChartCard.click();
             }
         });
-
-        console.log('🌍 Bhū-Darpan — Interactive digital twin ready.');
-        console.log('   Click districts · filter legend · toggle bands · pin impact cards · explore the pipeline.');
